@@ -1,3 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@tailwind variants;
+
+.navbar_item{
+    @apply p-2.5 mt-3 flex items-center rounded-md  duration-700 cursor-pointer hover:bg-blue-600 text-white
+}
+
+.navbar_item_text{
+    @apply w-full h-full text-right text-[15px] ml-4 text-gray-200 hover:text-white font-bold
+}
+
+.content{ 
+    @apply w-full bg-white py-10 px-5 lg:px-10 min-h-screen mt-[20%] lg:mt-0 mb-[100px]
+}
+
+.normal_button{
+    @apply focus:outline-none text-white bg-blue-600 hover:bg-blue-500 focus:ring-[2px] focus:ring-yellow-300 font-medium rounded-none shadow-none shadow-gray-300 text-sm px-5 py-2.5 mb-2 
+}
+
+.cancel_button{
+    @apply focus:outline-none text-white bg-gray-400 hover:bg-gray-400 focus:ring-[2px] focus:ring-yellow-300 font-medium rounded-none shadow-none shadow-gray-300 text-sm px-5 py-2.5 mb-2 
+}
+
+.input_box{
+    @apply block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-black dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600
+}
+
+.lable_box{
+    @apply peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6
+}
+
+.success{
+    @apply bg-green-500 text-white font-bold p-3 rounded-md
+}
+
+.danger{
+    @apply bg-red-500 text-white font-bold p-3 rounded-md
+}
+
+/***********************
+*                      *
+*  this for pagination *
+*                      *
+************************/
+.pagination{
+    @apply w-full inline-flex overflow-x-auto my-5
+}
+
+.page-item{
+    @apply bg-blue-600 min-w-fit mx-2 text-white  rounded-md
+}
+
+.page-link{
+    @apply block p-2 px-4
+}
+.disabled{
+    @apply bg-gray-300 text-black
+}
+
+.active{
+    @apply bg-orange-700
+}
+
+/************************************
+* for filter selecet drop down list *
+*************************************/
+
+.select_box{
+    @apply mx-2 my-2 p-2 flex-1 h-10 mt-2 w-full border-gray-500 border-solid border-[1px]
+}
+
+.is_visited{
+    @apply bg-green-100
+}
+
+.tab_cover{
+    @apply text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:text-gray-400 dark:border-gray-700
+}
+
+.tab_ul{
+    @apply flex flex-wrap -mb-px
+}
+
+.unselected_tab{
+    @apply inline-block p-4 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300
+}
+
+.selected_tab{
+    @apply inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active:dark:text-blue-500 dark:border-blue-500
+}

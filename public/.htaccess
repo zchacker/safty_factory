@@ -1,4 +1,6 @@
 <IfModule mod_rewrite.c>
+    # https://stackoverflow.com/questions/55346228/laravel-how-to-remove-index-php-from-url    
+    RewriteBase /factory
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>

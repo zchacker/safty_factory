@@ -16,3 +16,32 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('/client')->group(function(){
+
+    Route::get('/home', [\App\Http\Controllers\Client::class, 'index'])->name('client.home');
+    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Client::class, 'addClient'])->name('client.add');
+    
+});
+
+Route::prefix('/category')->group(function(){
+
+    Route::get('/home', [\App\Http\Controllers\Category::class, 'index'])->name('category.home');
+    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Client::class, 'addClient'])->name('client.add');
+    
+});
+
+Route::prefix('/neighborhood')->group(function(){
+
+    Route::get('/home', [\App\Http\Controllers\Neighborhood::class, 'index'])->name('neighborhood.home');
+    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Client::class, 'addClient'])->name('client.add');
+    
+});
+
+Route::group(['middleware' => ['auth:engineer']], function() {
+    /**
+     * Logout Routes
+     */
+    //Route::get('/logout', 'LogoutController@perform')->name('logout.perform');
+    //Route::get('/engineer', [\App\Http\Controllers\Engineer::class, 'home']);
+});
