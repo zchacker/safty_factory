@@ -2,7 +2,7 @@
 
 <div class="content">
     <div class="p-4">
-        <a href="{{ route('client.add') }}" class="normal_button">إضافة جديد</a>
+        <a href="{{ route('neighborhood.add') }}" class="normal_button">إضافة جديد</a>
     </div>
     
     <div class="tab_cover my-8">
@@ -33,7 +33,7 @@
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">                                                                                                
                                     <th scope="row">{{$neighborhood->id}}</th>
                                     <td class="px-6 py-2">{{$neighborhood->name}}</td>                                    
-                                    <td class="px-6 py-2"><a href="" target="_blank" class="text-red-800 font-extrabold hover:underline">حذف</a></td>
+                                    <td class="px-6 py-2"><a href="{{route('neighborhood.edit')}}?id={{$neighborhood->id}}" class="text-red-800 font-extrabold hover:underline">تعديل</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -27,14 +27,16 @@ Route::prefix('/client')->group(function(){
 Route::prefix('/category')->group(function(){
 
     Route::get('/home', [\App\Http\Controllers\Category::class, 'index'])->name('category.home');
-    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Client::class, 'addClient'])->name('client.add');
+    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Category::class, 'add'])->name('category.add');
+    Route::match(['get','post'] ,'/edit', [\App\Http\Controllers\Category::class, 'edit'])->name('category.edit');
     
 });
 
 Route::prefix('/neighborhood')->group(function(){
 
     Route::get('/home', [\App\Http\Controllers\Neighborhood::class, 'index'])->name('neighborhood.home');
-    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Client::class, 'addClient'])->name('client.add');
+    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Neighborhood::class, 'add'])->name('neighborhood.add');
+    Route::match(['get','post'] ,'/edit', [\App\Http\Controllers\Neighborhood::class, 'edit'])->name('neighborhood.edit');
     
 });
 
