@@ -75,7 +75,7 @@
                 <div class="navbar_item">
                     <!-- <i class="bi bi-box-arrow-in-right"></i> -->
                     <img src="{{ asset('imgs/logout.svg') }}" class="h-8 w-8 ml-5" alt="">
-                    <span class="navbar_item_text">تسجيل الخروج</span>
+                    <a href="{{ URL::to('/') }}" class="navbar_item_text">تسجيل الخروج</a>
                 </div>
             </div>
         </nav>

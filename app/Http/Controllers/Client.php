@@ -6,6 +6,7 @@ use App\Models\CategoryModel;
 use App\Models\ClientsModel;
 use App\Models\NeighborhoodsModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Client extends Controller
 {
@@ -121,6 +122,13 @@ class Client extends Controller
             
 
         }
+    }
+
+
+    public function logout(Request $request) 
+    {
+        Auth::logout();
+        return redirect('/');
     }
 
 }

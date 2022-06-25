@@ -16,7 +16,7 @@ class Category extends Controller
 
     public function index(Request $request)
     {
-        $categories = CategoryModel::paginate(5);
+        $categories = CategoryModel::paginate(10);
         return view("categories.home" , compact('categories'));
     }
 

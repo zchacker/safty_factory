@@ -13,13 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', [\App\Http\Controllers\Client::class, 'index']);
 
 Route::prefix('/client')->group(function(){
 
-    Route::get('/home', [\App\Http\Controllers\Client::class, 'index'])->name('client.home');    
+    Route::get('/home', [\App\Http\Controllers\Client::class, 'index'])->name('client.home');
     Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Client::class, 'addClient'])->name('client.add');
     Route::post('/sendToEngineer', [\App\Http\Controllers\Client::class, 'sendToEngineer'])->name('client.sendToEngineer');
 

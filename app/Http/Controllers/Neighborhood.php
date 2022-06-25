@@ -16,7 +16,7 @@ class Neighborhood extends Controller
 
     public function index(Request $request)
     {
-        $neighborhoods = NeighborhoodsModel::paginate(1);
+        $neighborhoods = NeighborhoodsModel::paginate(10);
         return view("neighborhoods.home" , compact('neighborhoods'));
     }
 
