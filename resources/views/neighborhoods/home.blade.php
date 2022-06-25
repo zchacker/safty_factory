@@ -30,7 +30,7 @@
                         </thead>
                         <tbody>
                             @foreach ($neighborhoods as $neighborhood)                                
-                                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">                                                                                                
+                                <tr class="bg-white border-b text-black dark:bg-gray-50 dark:border-gray-700">                                                                                                
                                     <th scope="row">{{$neighborhood->id}}</th>
                                     <td class="px-6 py-2">{{$neighborhood->name}}</td>                                    
                                     <td class="px-6 py-2"><a href="{{route('neighborhood.edit')}}?id={{$neighborhood->id}}" class="text-red-800 font-extrabold hover:underline">تعديل</a></td>
