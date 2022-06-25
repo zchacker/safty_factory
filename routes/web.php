@@ -19,9 +19,10 @@ Route::get('/', function () {
 
 Route::prefix('/client')->group(function(){
 
-    Route::get('/home', [\App\Http\Controllers\Client::class, 'index'])->name('client.home');
+    Route::get('/home', [\App\Http\Controllers\Client::class, 'index'])->name('client.home');    
     Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Client::class, 'addClient'])->name('client.add');
-    
+    Route::post('/sendToEngineer', [\App\Http\Controllers\Client::class, 'sendToEngineer'])->name('client.sendToEngineer');
+
 });
 
 Route::prefix('/category')->group(function(){

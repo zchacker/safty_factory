@@ -80,9 +80,9 @@
                                     <td class="px-6 py-2">{{$client->category_name}}</td>
                                     <td class="px-6 py-2">
                                         @if ( $client->send_to_engineer == 1 )
-                                            <input type="checkbox" checked/>
+                                            <input type="checkbox" checked onchange="javascript:send_to_engineer({{ $client->id }})"/>
                                         @else
-                                            <input type="checkbox" />
+                                            <input type="checkbox" onchange="javascript:send_to_engineer({{ $client->id }})"/>
                                         @endif
                                     </td>
                                     <td class="px-6 py-2"><a href="https://www.google.com/maps/search/?api=1&query={{$client->latitude}},{{$client->longitude}}" target="_blank" class="text-green-800 font-extrabold hover:underline">فتح الموقع</a></td>
@@ -99,4 +99,14 @@
     <!-- </div> -->
 </div>
 
+
+<script>
+    function send_to_engineer(client_id){
+                    
+        $.post("{{ route('client.sendToEngineer') }}", {id: client_id , _token: '{{ csrf_token() }}' }, function(result){
+            console.log(result);
+        });
+        
+    }
+</script>
 @include('client.footer')

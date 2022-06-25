@@ -91,7 +91,36 @@ class Client extends Controller
 
     public function sendToEngineer(Request $request)
     {
+        if($request->isMethod('post')){
+            
+            $client = ClientsModel::find($request->id);
+            
+            if($client != null){
+                $data = $client->first();
 
+                
+                if($data->send_to_engineer == 0){
+                    $client->send_to_engineer = 1;
+                }else{
+                    $client->send_to_engineer = 0;
+                }
+
+                if($client->update()){
+                    return "updated";
+                }else{
+                    return "error";
+                }
+
+            }else{
+
+                return "error";
+
+            }
+            
+            
+            
+
+        }
     }
 
 }
