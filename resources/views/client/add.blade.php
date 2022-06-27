@@ -40,7 +40,7 @@
                 <label for="neighborhood" class="lable_box">الحي</label>
                 <select name="neighborhood" id="neighborhood" class="input_box peer">
                     @foreach ($neighborhoods as $neighborhood)
-                        <option value="{{$neighborhood->id}}">{{$neighborhood->name}}</option>
+                    <option value="{{$neighborhood->id}}">{{$neighborhood->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -48,7 +48,7 @@
                 <label for="category" class="lable_box">نوع النشاط</label>
                 <select name="category" id="category" class="input_box peer">
                     @foreach ($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                    <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -61,9 +61,15 @@
             <input type="hidden" name="latitude" id="latitude" />
             <input type="hidden" name="longitude" id="longitude" />
 
-            <h2 class="font-bold">اختر الموقع على الخريطة</h2>
-            <span id="location_name" class="text-red-700 text-lg"></span>
-            <div id="map" class="lg:h-[400px] h-[400px] lg:mx-10 lg:my-4 mx-3 bg-slate-700 ">
+            <h2 class="font-bold my-5">اختر الموقع على الخريطة</h2>
+
+            <span id="location_name" class="text-red-700 text-lg my-8"></span>
+
+            <a href="javascript:getLocation();" class="normal_button">
+                <span class="mt-5 mb-10">حدد موقعي</span>                
+            </a>
+
+            <div id="map" class="my-3 lg:h-[400px] h-[400px] lg:mx-10 lg:my-4 mx-3 bg-slate-700 ">
 
             </div>
             <div class="my-4 bg-gray-200 h-[1px]"></div>
@@ -114,6 +120,7 @@
         $('#latitude').val(marker.getPosition().lat());
         $('#longitude').val(marker.getPosition().lng());
 
+
         google.maps.event.addListener(marker, 'dragend', function() {
 
             $('#latitude').val(marker.getPosition().lat());
@@ -141,6 +148,56 @@
                 }
             });
     }
+
+    function getLocation() {
+
+        console.log("start get location");
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition, showError);
+        } else {
+            alert("Geolocation is not supported by this browser.");
+        }
+    }
+
+    function showPosition(position) {
+        
+        const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+        };
+        
+        map.setCenter(pos);
+        
+        marker.setPosition(pos);
+
+        $('#latitude').val(position.coords.latitude);
+        $('#longitude').val(position.coords.longitude);
+
+    }
+
+    function showError(error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                alert("لا يوجد اذن للوصول الى اللوكشين");
+                //x.innerHTML = "User denied the request for Geolocation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                alert("غير قادر على الوصل الى موقعك");
+                //x.innerHTML = "Location information is unavailable."
+                break;
+            case error.TIMEOUT:
+                alert("تجاوز الوقت المسموح به للوصول الى موقعك");
+                //x.innerHTML = "The request to get user location timed out."
+                break;
+            case error.UNKNOWN_ERROR:
+                alert("حدث خطأ غير معرو");
+                //x.innerHTML = "An unknown error occurred."
+                break;
+        }
+    }
+
+    getLocation();
 
     window.initMap = initMap;
 </script>
