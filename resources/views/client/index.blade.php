@@ -86,7 +86,10 @@
                                         @endif
                                     </td>
                                     <td class="px-6 py-2"><a href="https://www.google.com/maps/search/?api=1&query={{$client->latitude}},{{$client->longitude}}" target="_blank" class="text-green-800 font-extrabold hover:underline">فتح الموقع</a></td>
-                                    <td class="px-6 py-2"><a href="" target="_blank" class="text-red-800 font-extrabold hover:underline">حذف</a></td>
+                                    <td class="px-6 py-2">
+                                        <a href="{{ route('client.edit') }}?id={{$client->id}}"  class="text-orange-500 !important font-extrabold hover:underline">تعديل</a> / 
+                                        <a href="{{ route('client.deleteClient') }}?id={{$client->id}}"  class="text-red-800 font-extrabold hover:underline">حذف</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

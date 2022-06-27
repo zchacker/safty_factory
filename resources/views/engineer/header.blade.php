@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="{{ asset('js/app.js') }}"></script>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css"/> -->    
-    <title>لوحة التحكم بالعملاء</title>
+    <title>لوحة التحكم المهندس</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
                 <div class="text-gray-100 text-xl">
                     <div class="p-2.5 mt-1 flex items-center">
                         <!-- <i class="bi bi-app-indicator px-2 py-1 rounded-md bg-blue-600"></i> -->
-                        <h1 class="font-bold text-right text-white lg:text-[1.6rem] ml-3">المندوب</h1>                    
+                        <h1 class="font-bold text-right w-full text-white lg:text-[1.6rem] ml-3">المهندس</h1>                                        
                         <img src="{{ asset('imgs/letter-x.svg') }}" class="h-8 w-8 ml-5 cursor-pointer left-0 absolute lg:hidden" onclick="openSidebar()" alt="">
                         <!-- <i class="bi bi-x cursor-pointer text-[45px] mr-28 lg:hidden" onclick="openSidebar()"></i> -->
                     </div>
@@ -33,23 +33,18 @@
                     
                     <!-- <i class="bi bi-house-door-fill"></i> -->
                     <img src="{{ asset('imgs/home.svg') }}" class="h-8 w-8 ml-5" alt="">
-                    <a href="{{ route('client.home') }}" class="navbar_item_text">الرئيسية</a>
+                    <a href="{{ route('engineer.home') }}" class="navbar_item_text">الرئيسية</a>
                     
-                </div>
+                </div>                
                 <div class="navbar_item">
                     <!-- <i class="bi bi-bookmark-fill"></i> -->
-                    <img src="{{ asset('imgs/city.svg') }}" class="h-8 w-8 ml-5" alt="">
-                    <a href="{{ route('category.home') }}" class="navbar_item_text">الانشطة والاحياء</a>
-                </div>
-                <div class="navbar_item">
-                    <!-- <i class="bi bi-bookmark-fill"></i> -->
-                    <img src="{{ asset('imgs/check.svg') }}" class="h-8 w-8 ml-5" alt="">
-                    <a href="{{ route('client.accepted') }}" class="navbar_item_text">الطلبات المكتملة</a>
+                    <img src="{{ asset('imgs/trash.svg') }}" class="h-8 w-8 ml-5" alt="">
+                    <a href="{{ route('engineer.completed') }}" class="navbar_item_text">الطلبات المكتملة</a>
                 </div>
                 <div class="navbar_item">
                     <!-- <i class="bi bi-bookmark-fill"></i> -->
                     <img src="{{ asset('imgs/trash.svg') }}" class="h-8 w-8 ml-5" alt="">
-                    <a href="{{ route('client.rejected') }}" class="navbar_item_text">الطلبات المرفوضة</a>
+                    <a href="{{ route('engineer.uncompleted') }}" class="navbar_item_text">الطلبات المرفوضة</a>
                 </div>
                 <div class="my-4 bg-white h-[1px]"></div>
                 <div class="navbar_item">
@@ -80,7 +75,7 @@
                 <div class="navbar_item">
                     <!-- <i class="bi bi-box-arrow-in-right"></i> -->
                     <img src="{{ asset('imgs/logout.svg') }}" class="h-8 w-8 ml-5" alt="">
-                    <a href="{{ route('client.logout') }}" class="navbar_item_text">تسجيل الخروج</a>
+                    <a href="{{ route('engineer.logout') }}" class="navbar_item_text">تسجيل الخروج</a>
                 </div>
             </div>
         </nav>

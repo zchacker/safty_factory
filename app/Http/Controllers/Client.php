@@ -7,6 +7,7 @@ use App\Models\ClientsModel;
 use App\Models\NeighborhoodsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class Client extends Controller
 {
@@ -40,6 +41,9 @@ class Client extends Controller
             $clientsModel->where(['company_name' => $request->company_name]);
         }
                 
+        $clientsModel->where('approved' ,'=', 0 );
+        $clientsModel->orWhere('approved' ,'=', 1 );
+
         $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name']);
         $categories     = CategoryModel::get();
         $neighborhoods  = NeighborhoodsModel::get();
@@ -80,15 +84,116 @@ class Client extends Controller
 
     }
 
-    public function showClient(Request $request)
+    public function rejected(Request $request)
     {
+
+        $clientsModel     = ClientsModel::join('categories' ,'categories.id' , '=' , 'clients.category');        
+        $clientsModel->join('neighborhoods' , 'neighborhoods.id' , '=' , 'clients.neighborhood');        
+        
+
+        if ($request->has('neighborhood') && strlen($request->neighborhood) > 0) {
+            $clientsModel->where(['neighborhood' => $request->neighborhood]);
+        }
+
+        if ($request->has('category') && strlen($request->category) > 0) {
+            $clientsModel->where(['category' => $request->category]);
+        }
+
+        if ($request->has('phone') && strlen($request->phone) > 0) {
+            $clientsModel->where(['phone' => $request->phone]);
+        }
+        
+        if ($request->has('company_name') && strlen($request->company_name) > 0) {
+            $clientsModel->where(['company_name' => $request->company_name]);
+        }
+                
+        $clientsModel->where('approved' ,'=', 2);        
+
+        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name']);
+        $categories     = CategoryModel::get();
+        $neighborhoods  = NeighborhoodsModel::get();
+
+        return view('client.index' , compact('clients', 'categories', 'neighborhoods'));
+
+    }
+
+    public function accepted(Request $request)
+    {
+
+        $clientsModel     = ClientsModel::join('categories' ,'categories.id' , '=' , 'clients.category');        
+        $clientsModel->join('neighborhoods' , 'neighborhoods.id' , '=' , 'clients.neighborhood');        
+        
+
+        if ($request->has('neighborhood') && strlen($request->neighborhood) > 0) {
+            $clientsModel->where(['neighborhood' => $request->neighborhood]);
+        }
+
+        if ($request->has('category') && strlen($request->category) > 0) {
+            $clientsModel->where(['category' => $request->category]);
+        }
+
+        if ($request->has('phone') && strlen($request->phone) > 0) {
+            $clientsModel->where(['phone' => $request->phone]);
+        }
+        
+        if ($request->has('company_name') && strlen($request->company_name) > 0) {
+            $clientsModel->where(['company_name' => $request->company_name]);
+        }
+                
+        $clientsModel->where('approved' ,'=', 1);        
+
+        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name']);
+        $categories     = CategoryModel::get();
+        $neighborhoods  = NeighborhoodsModel::get();
+
+        return view('client.index' , compact('clients', 'categories', 'neighborhoods'));
 
     }
 
     public function editClient(Request $request)
     {
+        $message        = "";
+        $error_message  = "";
 
+        if($request->has('id')){
+
+            if ($request->isMethod('post')) {
+
+                $client = ClientsModel::find($request->id);
+                $client->name = $request->first_name . ' ' . $request->last_name;
+                $client->phone = $request->phone;
+                $client->company_name = $request->company_name;
+                $client->city = "المدينة المنورة";
+                $client->neighborhood = $request->neighborhood;
+                $client->category = $request->category;
+                $client->note = $request->note;
+                $client->latitude = $request->latitude;
+                $client->longitude = $request->longitude;
+
+                if ($client->update()) {
+                    $message = "تم الحفظ بنجاح";
+                } else {
+                    $error_message  = "حدث خطأ ما لم يتم الحفظ بنجاح, حاول مرة أخرى";
+                }
+            }
+
+            $categories     = CategoryModel::get();
+            $neighborhoods  = NeighborhoodsModel::get();
+
+            $client = ClientsModel::find($request->id)->first();
+
+            return view('client.edit', compact('client', 'message', 'error_message', 'categories', 'neighborhoods'));
+        } else {
+
+            abort(Response::HTTP_NOT_FOUND);
+        }
     }
+
+    public function deleteClient(Request $request)
+    {
+        ClientsModel::find($request->id)->delete();
+        return redirect()->back();
+    }    
 
     public function sendToEngineer(Request $request)
     {

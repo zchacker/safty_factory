@@ -22,7 +22,7 @@
 }
 
 .cancel_button{
-    @apply focus:outline-none text-white bg-gray-400 hover:bg-gray-400 focus:ring-[2px] focus:ring-yellow-300 font-medium rounded-none shadow-none shadow-gray-300 text-sm px-5 py-2.5 mb-2 
+    @apply focus:outline-none text-white bg-gray-400 hover:bg-gray-600 focus:ring-[2px] focus:ring-yellow-300 font-medium rounded-none shadow-none shadow-gray-300 text-sm px-5 py-2.5 mb-2 
 }
 
 .input_box{
@@ -74,7 +74,11 @@
 }
 
 .is_visited{
-    @apply bg-green-100
+    @apply bg-blue-400 text-white
+}
+
+is_approved{
+    @apply bg-green-700 text-white
 }
 
 .tab_cover{
@@ -91,4 +95,16 @@
 
 .selected_tab{
     @apply inline-block p-4 text-blue-600 rounded-t-lg border-b-2 border-blue-600 active:dark:text-blue-500 dark:border-blue-500
+}
+
+.clickable-row{
+    cursor: pointer;
+}
+
+/********************
+*  Client Details   *
+*********************/
+
+.details_card{
+    @apply rounded-md shadow-md p-2 lg:mx-2 my-2 lg:my-2 bg-[#fcf6d6]
 }
