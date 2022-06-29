@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CategoryModel;
 use App\Models\ClientsModel;
 use App\Models\NeighborhoodsModel;
+use App\Models\SectionModel;
+use App\Models\ServicesModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,8 +23,10 @@ class Client extends Controller
     {
 
 
-        $clientsModel     = ClientsModel::join('categories' ,'categories.id' , '=' , 'clients.category');        
+        $clientsModel  = ClientsModel::join('categories' ,'categories.id' , '=' , 'clients.category');        
         $clientsModel->join('neighborhoods' , 'neighborhoods.id' , '=' , 'clients.neighborhood');        
+        $clientsModel->join('section' , 'section.id' , '=' , 'clients.section');        
+        $clientsModel->join('services' , 'services.id' , '=' , 'clients.service');        
         
 
         if ($request->has('neighborhood') && strlen($request->neighborhood) > 0) {
@@ -31,6 +35,14 @@ class Client extends Controller
 
         if ($request->has('category') && strlen($request->category) > 0) {
             $clientsModel->where(['category' => $request->category]);
+        }
+
+        if ($request->has('service') && strlen($request->service) > 0) {
+            $clientsModel->where(['service' => $request->service]);
+        }
+
+        if ($request->has('section') && strlen($request->section) > 0) {
+            $clientsModel->where(['section' => $request->section]);
         }
 
         if ($request->has('phone') && strlen($request->phone) > 0) {
@@ -44,11 +56,13 @@ class Client extends Controller
         $clientsModel->where('approved' ,'=', 0 );
         $clientsModel->orWhere('approved' ,'=', 1 );
 
-        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name']);
+        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name' , 'services.name AS service_name' , 'section.name AS section_name']);
         $categories     = CategoryModel::get();
         $neighborhoods  = NeighborhoodsModel::get();
+        $services       = ServicesModel::get();
+        $sections       = SectionModel::get();
 
-        return view('client.index' , compact('clients', 'categories', 'neighborhoods'));
+        return view('client.index' , compact('clients', 'categories', 'neighborhoods', 'services' , 'sections'));
 
     }
 
@@ -66,6 +80,8 @@ class Client extends Controller
             $client->city = "المدينة المنورة";
             $client->neighborhood = $request->neighborhood;
             $client->category = $request->category;
+            $client->section = $request->section;
+            $client->service = $request->service;
             $client->note = $request->note;
             $client->latitude = $request->latitude;
             $client->longitude = $request->longitude;
@@ -79,8 +95,10 @@ class Client extends Controller
 
         $categories     = CategoryModel::get();
         $neighborhoods  = NeighborhoodsModel::get();
+        $services       = ServicesModel::get();
+        $sections       = SectionModel::get();
 
-        return view('client.add' , compact('message' , 'error_message' , 'categories' , 'neighborhoods'));
+        return view('client.add' , compact('message' , 'error_message' , 'categories' , 'neighborhoods' , 'services' , 'sections'));
 
     }
 
@@ -89,7 +107,8 @@ class Client extends Controller
 
         $clientsModel     = ClientsModel::join('categories' ,'categories.id' , '=' , 'clients.category');        
         $clientsModel->join('neighborhoods' , 'neighborhoods.id' , '=' , 'clients.neighborhood');        
-        
+        $clientsModel->join('section' , 'section.id' , '=' , 'clients.section');        
+        $clientsModel->join('services' , 'services.id' , '=' , 'clients.service');  
 
         if ($request->has('neighborhood') && strlen($request->neighborhood) > 0) {
             $clientsModel->where(['neighborhood' => $request->neighborhood]);
@@ -109,11 +128,14 @@ class Client extends Controller
                 
         $clientsModel->where('approved' ,'=', 2);        
 
-        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name']);
+        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name' , 'services.name AS service_name' , 'section.name AS section_name']);
         $categories     = CategoryModel::get();
         $neighborhoods  = NeighborhoodsModel::get();
 
-        return view('client.index' , compact('clients', 'categories', 'neighborhoods'));
+        $services       = ServicesModel::get();
+        $sections       = SectionModel::get();
+
+        return view('client.index' , compact('clients', 'categories', 'neighborhoods', 'services' , 'sections'));
 
     }
 
@@ -122,7 +144,8 @@ class Client extends Controller
 
         $clientsModel     = ClientsModel::join('categories' ,'categories.id' , '=' , 'clients.category');        
         $clientsModel->join('neighborhoods' , 'neighborhoods.id' , '=' , 'clients.neighborhood');        
-        
+        $clientsModel->join('section' , 'section.id' , '=' , 'clients.section');        
+        $clientsModel->join('services' , 'services.id' , '=' , 'clients.service');  
 
         if ($request->has('neighborhood') && strlen($request->neighborhood) > 0) {
             $clientsModel->where(['neighborhood' => $request->neighborhood]);
@@ -142,11 +165,15 @@ class Client extends Controller
                 
         $clientsModel->where('approved' ,'=', 1);        
 
-        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name']);
+        $clients = $clientsModel->paginate(10 , ['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name' , 'services.name AS service_name' , 'section.name AS section_name']);
         $categories     = CategoryModel::get();
         $neighborhoods  = NeighborhoodsModel::get();
 
-        return view('client.index' , compact('clients', 'categories', 'neighborhoods'));
+        $services       = ServicesModel::get();
+        $sections       = SectionModel::get();
+
+        return view('client.index' , compact('clients', 'categories', 'neighborhoods', 'services' , 'sections'));
+
 
     }
 
@@ -179,10 +206,13 @@ class Client extends Controller
 
             $categories     = CategoryModel::get();
             $neighborhoods  = NeighborhoodsModel::get();
+            $services  = ServicesModel::get();
+            $sections  = SectionModel::get();
 
             $client = ClientsModel::find($request->id)->first();
 
-            return view('client.edit', compact('client', 'message', 'error_message', 'categories', 'neighborhoods'));
+            return view('client.edit', compact('client', 'message', 'error_message', 'categories', 'neighborhoods', 'services' , 'sections'));
+        
         } else {
 
             abort(Response::HTTP_NOT_FOUND);
@@ -236,4 +266,7 @@ class Client extends Controller
         return redirect('/');
     }
 
+
 }
+
+?>

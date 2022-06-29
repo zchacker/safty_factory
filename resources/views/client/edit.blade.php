@@ -65,6 +65,32 @@
             </div>
 
             <div class="relative z-0 w-full mb-6 group">
+                <label for="service" class="lable_box">نوع الخدمة</label>
+                <select name="service" id="service" class="input_box peer">
+                    @foreach ($services as $service)
+                    @if( $client->service == $service->id)
+                            <option value="{{$service->id}}" selected>{{$service->name}}</option>
+                        @else 
+                            <option value="{{$service->id}}" >{{$service->name}}</option>
+                        @endif                        
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="section" class="lable_box">الفئة</label>
+                <select name="section" id="section" class="input_box peer">
+                    @foreach ($sections as $section)
+                    @if( $client->section == $section->id)
+                            <option value="{{$section->id}}" selected>{{$section->name}}</option>
+                        @else 
+                            <option value="{{$section->id}}" >{{$section->name}}</option>
+                        @endif                        
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="relative z-0 w-full mb-6 group">
                 <label for="note" class="lable_box">ملاحظات</label>
                 <textarea name="note" class="input_box" id="note" cols="30" rows="10">{{$client->note}}</textarea>
             </div>

@@ -27,6 +27,14 @@
                 <strong>الموقع على الخريطة: </strong><a href="https://www.google.com/maps/search/?api=1&query={{$details->latitude}},{{$details->longitude}}" target="_blank" class="text-blue-800 font-extrabold hover:underline">فتح الموقع</a>
             </div>
         </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2">
+            <div class="details_card">
+                <strong>اسم الخدمة: </strong> <span>{{ $details->service_name }}</span>
+            </div>       
+            <div class="details_card">
+                <strong>الفئة: </strong><span>{{ $details->section_name }}</span>
+            </div>
+        </div>
         <div class="grid grid-cols-1 lg:grid-cols-1">
             <div class="details_card">
                 <strong>ملاحظات: </strong> <span>{{ $details->note }}</span>

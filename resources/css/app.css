@@ -6,11 +6,11 @@
 @tailwind variants;
 
 .navbar_item{
-    @apply p-2.5 mt-3 flex items-center rounded-md  duration-700 cursor-pointer hover:bg-blue-600 text-white
+    @apply p-0 mt-3 flex items-center rounded-md  duration-700 cursor-pointer hover:bg-blue-600 text-white
 }
 
 .navbar_item_text{
-    @apply w-full h-full text-right text-[15px] ml-4 text-gray-200 hover:text-white font-bold
+    @apply w-full h-full p-2.5 text-right text-[15px] ml-4 text-gray-200 hover:text-white font-bold
 }
 
 .content{ 
