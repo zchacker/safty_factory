@@ -19,6 +19,7 @@
                 <strong>النشاط: </strong> <span>{{ $details->category_name }}</span>
             </div>
         </div>
+        
         <div class="grid grid-cols-1 lg:grid-cols-2">
             <div class="details_card">
                 <strong>اسم الحي: </strong> <span>{{ $details->neighborhood_name }}</span>
