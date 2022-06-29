@@ -2,23 +2,23 @@
 
 <div class="content">
     <div class="p-4">
-        <a href="{{ route('category.add') }}" class="normal_button">إضافة جديد</a>
+        <a href="{{ route('section.add') }}" class="normal_button">إضافة جديد</a>
     </div>
     
     <div class="tab_cover my-8">
         <ul class="tab_ul">
             <li class="mr-2">
-                <a href="{{ route('category.home') }}" class="selected_tab">الانشطة</a>
+                <a href="{{ route('category.home') }}" class="unselected_tab">الانشطة</a>
             </li>                
             <li class="mr-2">
                 <a href="{{ route('neighborhood.home') }}" class="unselected_tab">الأحياء</a>
-            </li>     
+            </li>  
             <li class="mr-2">
-                <a href="{{ route('section.home') }}" class="unselected_tab">الاقسام</a>
+                <a href="{{ route('section.home') }}" class="selected_tab">الاقسام</a>
             </li> 
             <li class="mr-2">
                 <a href="{{ route('service.home') }}" class="unselected_tab">الخدمات</a>
-            </li>                        
+            </li>                         
         </ul>
     </div>
     
@@ -35,11 +35,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($categories as $category)                                
+                            @foreach ($sections as $section)                                
                                 <tr class="bg-white border-b text-black dark:bg-gray-50 dark:border-gray-700">                                                                                                
-                                    <th scope="row">{{$category->id}}</th>
-                                    <td class="px-6 py-2">{{$category->name}}</td>                                    
-                                    <td class="px-6 py-2"><a href="{{route('category.edit')}}?id={{$category->id}}"  class="text-red-800 font-extrabold hover:underline">تعديل</a></td>
+                                    <th scope="row">{{$section->id}}</th>
+                                    <td class="px-6 py-2">{{$section->name}}</td>                                    
+                                    <td class="px-6 py-2"><a href="{{route('section.edit')}}?id={{$section->id}}"  class="text-red-800 font-extrabold hover:underline">تعديل</a></td>
                                 </tr>
                             @endforeach
                         </tbody>
@@ -48,7 +48,7 @@
             </div>
         </div>
     </div>
-    {{ $categories->links('pagination::bootstrap-4') }}
+    {{ $sections->links('pagination::bootstrap-4') }}
     <!-- </div> -->
 </div>
 

@@ -12,7 +12,13 @@
             </li>                
             <li class="mr-2">
                 <a href="{{ route('neighborhood.home') }}" class="selected_tab">الأحياء</a>
-            </li>                           
+            </li>
+            <li class="mr-2">
+                <a href="{{ route('section.home') }}" class="unselected_tab">الاقسام</a>
+            </li> 
+            <li class="mr-2">
+                <a href="{{ route('service.home') }}" class="unselected_tab">الخدمات</a>
+            </li>                            
         </ul>
     </div>
     

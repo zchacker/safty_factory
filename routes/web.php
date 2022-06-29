@@ -57,6 +57,22 @@ Route::prefix('/neighborhood')->group(function(){
     
 });
 
+Route::prefix('/section')->group(function(){
+
+    Route::get('/home', [\App\Http\Controllers\Section::class, 'index'])->name('section.home');
+    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Section::class, 'add'])->name('section.add');
+    Route::match(['get','post'] ,'/edit', [\App\Http\Controllers\Section::class, 'edit'])->name('section.edit');
+    
+});
+
+Route::prefix('/service')->group(function(){
+
+    Route::get('/home', [\App\Http\Controllers\Service::class, 'index'])->name('service.home');
+    Route::match(['get','post'] ,'/add', [\App\Http\Controllers\Service::class, 'add'])->name('service.add');
+    Route::match(['get','post'] ,'/edit', [\App\Http\Controllers\Service::class, 'edit'])->name('service.edit');
+    
+});
+
 
 Route::prefix('/engineer')->group(function(){
 

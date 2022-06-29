@@ -39,7 +39,7 @@
                 <div class="navbar_item">
                     <!-- <i class="bi bi-bookmark-fill"></i> -->
                     <img src="{{ asset('imgs/city.svg') }}" class="h-8 w-8 ml-5" alt="">
-                    <a href="{{ route('category.home') }}" class="navbar_item_text">الانشطة والاحياء</a>
+                    <a href="{{ route('category.home') }}" class="navbar_item_text">تعريفات عامة</a>
                 </div>
                 <div class="navbar_item">
                     <!-- <i class="bi bi-bookmark-fill"></i> -->
