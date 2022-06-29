@@ -35,6 +35,7 @@
                 <strong>الفئة: </strong><span>{{ $details->section_name }}</span>
             </div>
         </div>
+        
         <div class="grid grid-cols-1 lg:grid-cols-1">
             <div class="details_card">
                 <strong>ملاحظات: </strong> <span>{{ $details->note }}</span>
