@@ -49,11 +49,11 @@ class Engineer extends Controller
 
             $clientsModel     = ClientsModel::join('categories' ,'categories.id' , '=' , 'clients.category');        
             $clientsModel->join('neighborhoods' , 'neighborhoods.id' , '=' , 'clients.neighborhood');        
-            $clientsModel->join('section' , 'section.id' , '=' , 'clients.section');        
-            $clientsModel->join('services' , 'services.id' , '=' , 'clients.service');        
+            // $clientsModel->join('section' , 'section.id' , '=' , 'clients.section');        
+            // $clientsModel->join('services' , 'services.id' , '=' , 'clients.service');        
             $clientsModel->where(['clients.id' => $request->id]);        
                     
-            $details = $clientsModel->first(['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name' , 'services.name AS service_name' , 'section.name AS section_name']);
+            $details = $clientsModel->first(['clients.*' , 'categories.name AS category_name' , 'neighborhoods.name AS neighborhood_name']);// , 'services.name AS service_name' , 'section.name AS section_name']);
             
             $data = ClientsModel::find($request->id);
             $data->is_visited = 1;

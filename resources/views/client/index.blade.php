@@ -24,7 +24,7 @@
                             <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
-                    <select class="select_box" name="service">
+                    <!-- <select class="select_box" name="service">
                         <option value="" disabled selected>الخدمة</option>
                         @foreach ($services as $service)
                             <option value="{{$service->id}}">{{$service->name}}</option>
@@ -35,7 +35,7 @@
                         @foreach ($sections as $section)
                             <option value="{{$section->id}}">{{$section->name}}</option>
                         @endforeach
-                    </select>
+                    </select> -->
                     <div class="w-full flex-1 mx-2">
                         <div class="my-2 p-1 bg-white flex border border-gray-500 rounded-none">
                             <input placeholder="رقم الهاتف" name="phone" value="" class="p-1 px-2 appearance-none outline-none w-full text-gray-800 ">
@@ -71,8 +71,8 @@
                                 <th scope="col" class="px-6 py-3">#</th>
                                 <th scope="col" class="px-6 py-3">الاسم</th>
                                 <th scope="col" class="px-6 py-3">رقم الهاتف</th>
-                                <th scope="col" class="px-6 py-3">الخدمة</th>
-                                <th scope="col" class="px-6 py-3">الفئة</th>
+                                <!-- <th scope="col" class="px-6 py-3">الخدمة</th>
+                                <th scope="col" class="px-6 py-3">الفئة</th> -->
                                 <th scope="col" class="px-6 py-3">الحي</th>
                                 <th scope="col" class="px-6 py-3">النشاط</th>
                                 <th scope="col" class="px-6 py-3">أرسل للمهندس</th>
@@ -90,8 +90,8 @@
                                     <th scope="row">{{$client->id}}</th>
                                     <td class="px-6 py-2">{{$client->name}}</td>
                                     <td class="px-6 py-2">{{$client->phone}}</td>
-                                    <td class="px-6 py-2">{{$client->service_name}}</td>
-                                    <td class="px-6 py-2">{{$client->section_name}}</td>
+                                    <!-- <td class="px-6 py-2">{{$client->service_name}}</td>
+                                    <td class="px-6 py-2">{{$client->section_name}}</td> -->
                                     <td class="px-6 py-2">{{$client->neighborhood_name}}</td>
                                     <td class="px-6 py-2">{{$client->category_name}}</td>
                                     <td class="px-6 py-2">

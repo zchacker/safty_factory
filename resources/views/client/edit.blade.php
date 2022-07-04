@@ -19,7 +19,7 @@
         <form action="" method="post" class="relative">
             @csrf
             @php
-                $name_array = explode(' ' , $client->name);
+            $name_array = explode(' ' , $client->name);
             @endphp
             <div class="grid xl:grid-cols-2 xl:gap-6">
                 <div class="relative z-0 w-full mb-6 group">
@@ -43,11 +43,11 @@
                 <label for="neighborhood" class="lable_box">الحي</label>
                 <select name="neighborhood" id="neighborhood" class="input_box peer">
                     @foreach ($neighborhoods as $neighborhood)
-                        @if( $client->neighborhood == $neighborhood->id)
-                            <option value="{{$neighborhood->id}}" selected>{{$neighborhood->name}}</option>
-                        @else 
-                            <option value="{{$neighborhood->id}}" >{{$neighborhood->name}}</option>
-                        @endif
+                    @if( $client->neighborhood == $neighborhood->id)
+                    <option value="{{$neighborhood->id}}" selected>{{$neighborhood->name}}</option>
+                    @else
+                    <option value="{{$neighborhood->id}}">{{$neighborhood->name}}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
@@ -56,46 +56,79 @@
                 <select name="category" id="category" class="input_box peer">
                     @foreach ($categories as $category)
                     @if( $client->neighborhood == $category->id)
-                            <option value="{{$category->id}}" selected>{{$category->name}}</option>
-                        @else 
-                            <option value="{{$category->id}}" >{{$category->name}}</option>
-                        @endif                        
+                    <option value="{{$category->id}}" selected>{{$category->name}}</option>
+                    @else
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endif
                     @endforeach
                 </select>
             </div>
 
             <div class="relative z-0 w-full mb-6 group">
-                <label for="service" class="lable_box">نوع الخدمة</label>
+                @php
+                    $service_arr = explode(',' , $client->service );
+                @endphp
+
+                <label for="service" class="font-bold text-sm text-gray-500">الخدمة المطلوبة</label>
+                @foreach ($services as $service)
+                    <label for="{{$service->name}}" class="required:border-red-500 block">
+                        @if( in_array($service->name , $service_arr) )
+                            <input type="checkbox" name="service[]" id="{{$service->name}}" checked value="{{$service->name}}">
+                        @else 
+                            <input type="checkbox" name="service[]" id="{{$service->name}}" value="{{$service->name}}">
+                        @endif
+                        {{$service->name}}
+                    </label>
+                @endforeach
+
+                <!-- <label for="service" class="lable_box">نوع الخدمة</label>
                 <select name="service" id="service" class="input_box peer">
                     @foreach ($services as $service)
                     @if( $client->service == $service->id)
-                            <option value="{{$service->id}}" selected>{{$service->name}}</option>
-                        @else 
-                            <option value="{{$service->id}}" >{{$service->name}}</option>
-                        @endif                        
+                    <option value="{{$service->id}}" selected>{{$service->name}}</option>
+                    @else
+                    <option value="{{$service->id}}">{{$service->name}}</option>
+                    @endif
                     @endforeach
-                </select>
+                </select> -->
             </div>
 
             <div class="relative z-0 w-full mb-6 group">
-                <label for="section" class="lable_box">الفئة</label>
+                @php
+                    $section_arr = explode(',' , $client->section );
+                @endphp
+
+                <label for="section" class="font-bold text-sm text-gray-500">الفئة المطلوبة</label>
+                @foreach ($sections as $section)
+                    <label for="{{$service->name}}" class="required:border-red-500 block">
+                        @if( in_array($section->name , $section_arr) )
+                            <input type="checkbox" name="section[]" id="{{$section->name}}" checked value="{{$section->name}}">
+                        @else 
+                            <input type="checkbox" name="section[]" id="{{$section->name}}" value="{{$section->name}}">
+                        @endif
+                        {{$section->name}}
+                    </label>
+                @endforeach
+
+
+                <!-- <label for="section" class="lable_box">الفئة</label>
                 <select name="section" id="section" class="input_box peer">
                     @foreach ($sections as $section)
-                    @if( $client->section == $section->id)
-                            <option value="{{$section->id}}" selected>{{$section->name}}</option>
-                        @else 
-                            <option value="{{$section->id}}" >{{$section->name}}</option>
-                        @endif                        
+                        @if( $client->section == $section->id)
+                        <option value="{{$section->id}}" selected>{{$section->name}}</option>
+                        @else
+                        <option value="{{$section->id}}">{{$section->name}}</option>
+                        @endif
                     @endforeach
-                </select>
+                </select> -->
             </div>
-
+            
             <div class="relative z-0 w-full mb-6 group">
                 <label for="note" class="lable_box">ملاحظات</label>
                 <textarea name="note" class="input_box" id="note" cols="30" rows="10">{{$client->note}}</textarea>
             </div>
 
-            <input type="hidden" name="latitude" id="latitude" value="{{$client->latitude}}"/>
+            <input type="hidden" name="latitude" id="latitude" value="{{$client->latitude}}" />
             <input type="hidden" name="longitude" id="longitude" value="{{$client->longitude}}" />
 
             <h2 class="font-bold">اختر الموقع على الخريطة</h2>

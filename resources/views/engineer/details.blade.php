@@ -31,11 +31,26 @@
 
         
         <div class="grid grid-cols-1 lg:grid-cols-2">
+            @php
+                $service_arr = explode(',' , $details->service );
+                $section_arr = explode(',' , $details->section );
+            @endphp
             <div class="details_card">
-                <strong>اسم الخدمة: </strong> <span>{{ $details->service_name }}</span>
+                <strong>اسم الخدمة: </strong> 
+                <ul class="list-disc">
+                    @foreach ($service_arr as $service)
+                        <li>{{ $service }}</li>                        
+                    @endforeach
+                </ul>
+                
             </div>       
             <div class="details_card">
-                <strong>الفئة: </strong><span>{{ $details->section_name }}</span>
+                <strong>الفئة: </strong>
+                <ul class="list-disc">
+                    @foreach ($section_arr as $section)
+                        <li>{{ $section }}</li>                    
+                    @endforeach
+                </ul>
             </div>
         </div>
 

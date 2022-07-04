@@ -17,6 +17,7 @@ class ClientsModel extends Model
      *
      * @var int
      */
+    // protected $primaryKey = 'id';
     protected $primaryKey = 'id';
 
     /**
@@ -25,6 +26,7 @@ class ClientsModel extends Model
      * @var array<string, string>
      */
     protected $fillable = [
+        'id',
         'name',
         'phone',
         'company_name',

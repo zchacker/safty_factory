@@ -45,7 +45,7 @@
                 </select>
             </div>
             <div class="relative z-0 w-full mb-6 group">
-                <label for="category" class="lable_box">نوع النشاط</label>
+                <label for="category" class="lable_box">نوع النشاط</label>                
                 <select name="category" id="category" class="input_box peer">
                     @foreach ($categories as $category)
                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -54,21 +54,32 @@
             </div>
 
             <div class="relative z-0 w-full mb-6 group">
-                <label for="service" class="lable_box">الخدمة المطلوبة</label>
-                <select name="service" id="service" class="input_box peer">
+                <label for="service" class="font-bold text-sm text-gray-500">الخدمة المطلوبة</label>
+                @foreach ($services as $service)                    
+                    <label for="{{$service->name}}" class="required:border-red-500 block">
+                    <input type="checkbox" name="service[]" id="{{$service->name}}" value="{{$service->name}}" >
+                    {{$service->name}}</label>
+                @endforeach
+                <!-- <select name="service" id="service" class="input_box peer">
                     @foreach ($services as $service)
                     <option value="{{$service->id}}">{{$service->name}}</option>
                     @endforeach
-                </select>
+                </select> -->
             </div>
 
             <div class="relative z-0 w-full mb-6 group">
-                <label for="section" class="lable_box">الفئة</label>
+                <label for="" class="font-bold text-sm text-gray-500">الفئة</label>
+                @foreach ($sections as $section)                    
+                    <label for="{{$section->name}}" class="required:border-red-500 block">
+                    <input type="checkbox" name="section[]" id="{{$section->name}}" value="{{$section->name}}" >
+                    {{$section->name}}</label>
+                @endforeach
+                <!-- <label for="section" class="lable_box">الفئة</label>
                 <select name="section" id="section" class="input_box peer">
                     @foreach ($sections as $section)
                     <option value="{{$section->id}}">{{$section->name}}</option>
                     @endforeach
-                </select>
+                </select> -->
             </div>
 
             <div class="relative z-0 w-full mb-6 group">
