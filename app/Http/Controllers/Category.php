@@ -81,4 +81,13 @@ class Category extends Controller
         
     }
 
+
+    public function delete(Request $request)
+    {
+
+        CategoryModel::find($request->id)->delete();
+        return redirect()->back();
+
+    }
+
 }

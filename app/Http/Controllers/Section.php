@@ -79,4 +79,14 @@ class Section extends Controller
         abort(Response::HTTP_NOT_FOUND);
         
     }
+
+    public function delete(Request $request)
+    {
+
+        SectionModel::find($request->id)->delete();
+        return redirect()->back();
+
+    }
+
+
 }

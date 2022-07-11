@@ -81,4 +81,13 @@ class Neighborhood extends Controller
         
     }
 
+
+    public function delete(Request $request)
+    {
+
+        NeighborhoodsModel::find($request->id)->delete();
+        return redirect()->back();
+
+    }
+
 }

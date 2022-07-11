@@ -31,7 +31,8 @@
                             <tr>
                                 <th scope="col" class="px-6 py-3">#</th>
                                 <th scope="col" class="px-6 py-3">الاسم</th>
-                                <th scope="col" class="px-6 py-3">حذف / تعديل</th>
+                                <th scope="col" class="px-6 py-3">تعديل</th>
+                                <th scope="col" class="px-6 py-3">حذف</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,7 +40,8 @@
                                 <tr class="bg-white border-b text-black dark:bg-gray-50 dark:border-gray-700">                                                                                                
                                     <th scope="row">{{$category->id}}</th>
                                     <td class="px-6 py-2">{{$category->name}}</td>                                    
-                                    <td class="px-6 py-2"><a href="{{route('category.edit')}}?id={{$category->id}}"  class="text-red-800 font-extrabold hover:underline">تعديل</a></td>
+                                    <td class="px-6 py-2"><a href="{{route('category.edit')}}?id={{$category->id}}"  class="text-orange-500 font-extrabold hover:underline">تعديل</a></td>
+                                    <td class="px-6 py-2"><a href="{{route('category.delete')}}?id={{$category->id}}"  class="text-red-800 font-extrabold hover:underline">حذف</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

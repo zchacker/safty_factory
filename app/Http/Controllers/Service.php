@@ -79,4 +79,14 @@ class Service extends Controller
         abort(Response::HTTP_NOT_FOUND);
         
     }
+
+    public function delete(Request $request)
+    {
+
+        ServicesModel::find($request->id)->delete();
+        return redirect()->back();
+
+    }
+
+
 }
