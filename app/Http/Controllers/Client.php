@@ -62,7 +62,7 @@ class Client extends Controller
         $neighborhoods  = NeighborhoodsModel::get();
         $services       = ServicesModel::get();
         $sections       = SectionModel::get();
-
+        
         return view('client.index' , compact('clients', 'categories', 'neighborhoods', 'services' , 'sections'));
 
     }

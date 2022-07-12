@@ -7,12 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class UserModel extends Authenticatable
-{    
-    use HasFactory, Notifiable;
+{
+    use HasFactory, HasFactory, Notifiable;
 
 
     protected $table = 'users';
-    
+
     /**
      * The primary key associated with the table.
      *
@@ -40,7 +40,17 @@ class UserModel extends Authenticatable
      * @var array<string>
      */
     protected $hidden = [
-        'password',        
+        'password',
     ];
+
+    /**
+     * @param string $role
+     * @return bool
+     */
+    public function hasRole(string $role): bool
+    {
+        return $this->getAttribute('role') === $role;
+    }
+
 
 }
