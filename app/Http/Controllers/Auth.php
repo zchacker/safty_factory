@@ -10,6 +10,7 @@ class Auth extends Controller
 
     // this link for setup auth system based on user role
     // https://learn2torials.com/a/laravel8-authentication-based-on-roles
+    // http://thewebfosters.com/display-user-devices-application-currently-logged-option-logout-laravel/
     public function login(Request $request)
     {
 
@@ -38,4 +39,7 @@ class Auth extends Controller
 
         return view('login');
     }
+
+
+
 }
