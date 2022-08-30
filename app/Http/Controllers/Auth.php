@@ -19,7 +19,7 @@ class Auth extends Controller
         
         if($request->isMethod('post'))
         {
-            if(AuthLogin::attempt(['email' => $request->email, 'password' => $request->password]))
+            if(AuthLogin::attempt(['email' => $request->email, 'password' => $request->password] , true))
             {
                 if(AuthLogin::user()->role == 'user')
                 {                    

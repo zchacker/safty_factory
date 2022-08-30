@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth', 'engineer']], function () {
         Route::get('/completed', [\App\Http\Controllers\Engineer::class, 'completed'])->name('engineer.completed');
         Route::get('/uncompleted', [\App\Http\Controllers\Engineer::class, 'uncompleted'])->name('engineer.uncompleted');
         Route::match(['get', 'post'], '/details', [\App\Http\Controllers\Engineer::class, 'details'])->name('engineer.details');
+        Route::match(['get', 'post'], '/price_offer/{client_id?}', [\App\Http\Controllers\Engineer::class, 'price_offer'])->name('engineer.price_offer');
         Route::get('/logout', [\App\Http\Controllers\Engineer::class, 'logout'])->name('engineer.logout');
     });
 });

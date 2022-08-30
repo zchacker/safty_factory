@@ -68,6 +68,8 @@
                 @csrf
                 <input type="submit" name="compelte" value="اكتملت المعاملة" class="normal_button" />
                 <input type="submit" name="uncompelte" value="تم رفض المعاملة" class="cancel_button" />
+
+                <a href="{{ route('engineer.price_offer', [$details->id]) }}" class="normal_button">عرض سعر</a>
             </form>
         </div>
     </div>

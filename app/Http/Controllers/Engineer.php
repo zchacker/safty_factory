@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\ClientsModel;
+use App\Models\Products;
+use App\Models\ProductsModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -67,6 +69,19 @@ class Engineer extends Controller
 
         }
         
+    }
+
+    public function price_offer(Request $request)
+    {
+        if($request->isMethod('post')){
+           // var_dump($request->input('products'));
+        }
+
+
+        $customer     = ClientsModel::where(['id' => $request->client_id])->first();
+        $products         = ProductsModel::get();
+
+        return view('engineer.price_offer' , compact('customer' , 'products'));
     }
 
     public function completed(Request $request)
