@@ -27,7 +27,7 @@ Route::match(['get', 'post'], '/login', [\App\Http\Controllers\Auth::class, 'log
 
 
 
-Route::group(['middleware' => ['auth', 'user']], function () {
+//Route::group(['middleware' => ['auth', 'user']], function () {
 
     Route::prefix('/client')->group(function () {
 
@@ -74,9 +74,9 @@ Route::group(['middleware' => ['auth', 'user']], function () {
         Route::get('/delete', [\App\Http\Controllers\Service::class, 'delete'])->name('service.delete');
     });
 
-});
+//});
 
-Route::group(['middleware' => ['auth', 'engineer']], function () {
+//Route::group(['middleware' => ['auth', 'engineer']], function () {
     Route::prefix('/engineer')->group(function () {
 
         Route::get('/home', [\App\Http\Controllers\Engineer::class, 'home'])->name('engineer.home');
@@ -86,7 +86,7 @@ Route::group(['middleware' => ['auth', 'engineer']], function () {
         Route::match(['get', 'post'], '/price_offer/{client_id?}', [\App\Http\Controllers\Engineer::class, 'price_offer'])->name('engineer.price_offer');
         Route::get('/logout', [\App\Http\Controllers\Engineer::class, 'logout'])->name('engineer.logout');
     });
-});
+//});
 
 // Route::group(['middleware' => ['auth:engineer']], function () {
 //     /**
