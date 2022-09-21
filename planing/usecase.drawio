@@ -1,0 +1,55 @@
+<mxfile host="65bd71144e">
+    <diagram id="LH6W7zta-Uq3f3S120vp" name="Page-1">
+        <mxGraphModel dx="948" dy="855" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1400" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="14" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=none;strokeColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="250" y="60" width="630" height="1070" as="geometry"/>
+                </mxCell>
+                <mxCell id="2" value="تخزين بيانات عميل" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="180" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="المندوب" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="170" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="المهندس" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="110" y="310" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="فني الصيانة" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="710" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="فني الاصلاح" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="970" y="690" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="العميل" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="460" width="30" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="وظائف النظام" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+                    <mxGeometry x="565" y="90" width="70" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="إنشاء عرض سعر" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="290" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="إنشاء عقد" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="305" y="410" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="تسجيل زيارة صيانة" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="530" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="إبلاغ عن عطل" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="305" y="670" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="19" value="عرض سعر إصلاح&amp;nbsp;&lt;br&gt;بعد العقد" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="300" y="810" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="20" value="إنشاء عرض سعر&lt;br&gt;للإصلاحات" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+                    <mxGeometry x="460" y="290" width="120" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="21" value="فني الاصلاح" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+                    <mxGeometry x="920" y="480" width="30" height="60" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
